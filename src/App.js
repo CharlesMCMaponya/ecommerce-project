@@ -10,6 +10,8 @@ import ConfirmationPage from './pages/ConfirmationPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import ProfilePage from './pages/ProfilePage';
+import OrderHistoryPage from './pages/OrderHistoryPage';
+import OrderDetailPage from './pages/OrderDetailPage';
 import { useCart } from './contexts/CartContext';
 import { useAuth } from './contexts/AuthContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -73,7 +75,7 @@ function App() {
                     </button>
                     <ul className="dropdown-menu dropdown-menu-end">
                       <li><Link className="dropdown-item" to="/profile">Profile</Link></li>
-                      <li><Link className="dropdown-item" to="/orders">Orders</Link></li>
+                      <li><Link className="dropdown-item" to="/orders">Order History</Link></li>
                       <li><hr className="dropdown-divider" /></li>
                       <li><button className="dropdown-item" onClick={logout}>Logout</button></li>
                     </ul>
@@ -101,6 +103,8 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/orders" element={<OrderHistoryPage />} />
+            <Route path="/orders/:id" element={<OrderDetailPage />} />
             <Route path="/" element={
               <div className="container text-center my-5 py-5">
                 <h1 className="display-4 mb-4">Welcome to MCPECULIAR</h1>
