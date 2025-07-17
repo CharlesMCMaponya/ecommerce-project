@@ -10,8 +10,7 @@ import ConfirmationPage from './pages/ConfirmationPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import ProfilePage from './pages/ProfilePage';
-import OrderHistoryPage from './pages/OrderHistoryPage';
-import OrderDetailPage from './pages/OrderDetailPage';
+
 import { useCart } from './contexts/CartContext';
 import { useAuth } from './contexts/AuthContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -37,7 +36,7 @@ function App() {
               <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
-              <ul className="navbar-nav me-auto">
+              <ul className="navbar-nav mx-auto">
                 <li className="nav-item">
                   <Link className="nav-link" to="/">Home</Link>
                 </li>
@@ -75,7 +74,6 @@ function App() {
                     </button>
                     <ul className="dropdown-menu dropdown-menu-end">
                       <li><Link className="dropdown-item" to="/profile">Profile</Link></li>
-                      <li><Link className="dropdown-item" to="/orders">Order History</Link></li>
                       <li><hr className="dropdown-divider" /></li>
                       <li><button className="dropdown-item" onClick={logout}>Logout</button></li>
                     </ul>
@@ -103,8 +101,6 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/profile" element={<ProfilePage />} />
-            <Route path="/orders" element={<OrderHistoryPage />} />
-            <Route path="/orders/:id" element={<OrderDetailPage />} />
             <Route path="/" element={
               <div className="container text-center my-5 py-5">
                 <h1 className="display-4 mb-4">Welcome to MCPECULIAR</h1>
@@ -131,11 +127,11 @@ function App() {
         <footer className="bg-dark text-white py-4 mt-auto">
           <div className="container">
             <div className="row">
-              <div className="col-md-4">
+              <div className="col-md-4 text-start">
                 <h5>MCPECULIAR</h5>
                 <p>Premium fashion for the discerning individual.</p>
               </div>
-              <div className="col-md-4">
+              <div className="col-md-4 text-center">
                 <h5>Quick Links</h5>
                 <ul className="list-unstyled">
                   <li><Link to="/" className="text-white">Home</Link></li>
@@ -144,7 +140,7 @@ function App() {
                   <li><Link to="/contact" className="text-white">Contact</Link></li>
                 </ul>
               </div>
-              <div className="col-md-4">
+              <div className="col-md-4 text-end">
                 <h5>Contact</h5>
                 <p>Email: contact@mcpeculiar.com</p>
                 <p>Phone: +27 12 345 6789</p>

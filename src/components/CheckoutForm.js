@@ -1,12 +1,12 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import axios from 'axios';
-import { CartContext } from '../context/CartContext'; // Adjust path as needed
+import { useCart } from '../contexts/CartContext'; // Use the useCart hook
 
 const CheckoutForm = ({ shippingInfo, total }) => {
   const stripe = useStripe();
   const elements = useElements();
-  const { cart, dispatch } = useContext(CartContext); // Get cart from context
+  const { cart, dispatch } = useCart(); // Use the useCart hook
   
   const [error, setError] = useState(null);
   const [processing, setProcessing] = useState(false);
