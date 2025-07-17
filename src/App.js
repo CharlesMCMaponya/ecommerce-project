@@ -103,20 +103,16 @@ function App() {
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/" element={
               <div className="container text-center my-5 py-5">
-                <h1 className="display-4 mb-4">Welcome to MCPECULIAR</h1>
+                <h1 className="display-4 mb-4"> MCPECULIAR APPAREL</h1>
                 <p className="lead mb-4">Your exclusive fashion destination</p>
                 <div className="row justify-content-center">
                   <div className="col-md-8">
-                    <div className="card bg-light border-0 shadow">
-                      <div className="card-body p-5">
-                        <p className="card-text mb-4">
-                          Discover our premium collection of unique apparel that reflects your distinctive style.
-                        </p>
-                        <Link to="/products" className="btn btn-primary btn-lg px-4">
-                          Shop Now
-                        </Link>
-                      </div>
-                    </div>
+                    <p className="mb-4">
+                      Discover our premium collection of unique apparel that reflects your distinctive style.
+                    </p>
+                    <Link to="/products" className="btn btn-primary btn-lg px-4">
+                      Shop Now
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -142,8 +138,8 @@ function App() {
               </div>
               <div className="col-md-4 text-end">
                 <h5>Contact</h5>
-                <p>Email: contact@mcpeculiar.com</p>
-                <p>Phone: +27 12 345 6789</p>
+                <p>Email:CharlesMosehla@outlook.com</p>
+                <p>Phone: +27761944140</p>
               </div>
             </div>
             <div className="text-center mt-3">
