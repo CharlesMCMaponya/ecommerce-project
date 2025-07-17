@@ -110,8 +110,65 @@ function App() {
                     <p className="mb-4">
                       Discover our premium collection of unique apparel that reflects your distinctive style.
                     </p>
-                    <Link to="/products" className="btn btn-primary btn-lg px-4">
-                      Shop Now
+                    <Link 
+                      to="/products" 
+                      className="crystal-btn"
+                      style={{
+                        position: 'relative',
+                        overflow: 'hidden',
+                        borderRadius: '12px',
+                        border: '1px solid rgba(100, 100, 100, 0.4)',
+                        background: 'rgba(60, 60, 60, 0.8)',
+                        backdropFilter: 'blur(16px)',
+                        WebkitBackdropFilter: 'blur(16px)',
+                        padding: '12px 32px',
+                        fontSize: '16px',
+                        fontWeight: '600',
+                        letterSpacing: '-0.025em',
+                        color: 'rgba(240, 240, 240, 0.95)',
+                        textDecoration: 'none',
+                        display: 'inline-block',
+                        boxShadow: 'inset 0 1px 0 rgba(150, 150, 150, 0.2), 0 4px 12px rgba(0, 0, 0, 0.3)',
+                        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                        animation: 'fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) both'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.target.style.boxShadow = 'inset 0 1px 0 rgba(150, 150, 150, 0.2), 0 20px 40px rgba(80, 80, 80, 0.4)';
+                        e.target.style.transform = 'translateY(-2px)';
+                        e.target.style.background = 'rgba(80, 80, 80, 0.9)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.target.style.boxShadow = 'inset 0 1px 0 rgba(150, 150, 150, 0.2), 0 4px 12px rgba(0, 0, 0, 0.3)';
+                        e.target.style.transform = 'translateY(0)';
+                        e.target.style.background = 'rgba(60, 60, 60, 0.8)';
+                      }}
+                    >
+                      <span style={{ position: 'relative', zIndex: 10 }}>Shop&nbsp;Now</span>
+                      <span 
+                        className="crystal-sheen"
+                        style={{
+                          position: 'absolute',
+                          inset: 0,
+                          borderRadius: '12px',
+                          background: 'rgba(120, 120, 120, 0.3)',
+                          opacity: 0,
+                          transition: 'opacity 0.3s ease',
+                          pointerEvents: 'none'
+                        }}
+                      ></span>
+                      <span 
+                        className="crystal-glow"
+                        style={{
+                          position: 'absolute',
+                          inset: '-4px',
+                          borderRadius: '16px',
+                          background: 'linear-gradient(135deg, rgba(120, 120, 120, 0.4), transparent)',
+                          opacity: 0.1,
+                          filter: 'blur(4px)',
+                          transition: 'opacity 0.3s ease',
+                          pointerEvents: 'none'
+                        }}
+                      ></span>
                     </Link>
                   </div>
                 </div>
@@ -147,6 +204,27 @@ function App() {
             </div>
           </div>
         </footer>
+
+        <style jsx>{`
+          @keyframes fadeIn {
+            0% { 
+              opacity: 0; 
+              transform: translateY(8px); 
+            }
+            100% { 
+              opacity: 1; 
+              transform: translateY(0); 
+            }
+          }
+          
+          .crystal-btn:hover .crystal-sheen {
+            opacity: 0.15 !important;
+          }
+          
+          .crystal-btn:hover .crystal-glow {
+            opacity: 0.25 !important;
+          }
+        `}</style>
       </div>
     </Router>
   );
