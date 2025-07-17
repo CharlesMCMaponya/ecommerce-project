@@ -1,0 +1,155 @@
+/* Search and filter */
+.input-group {
+  margin-bottom: 1rem;
+}
+
+.form-select {
+  cursor: pointer;
+}
+
+/* Checkout Page Fixes */
+.container.my-5 {
+  min-height: calc(100vh - 200px); /* Prevent footer overlap */
+}
+
+.card {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  margin-bottom: 1.5rem;
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.border-bottom {
+  border-bottom: 1px solid #e9ecef !important;
+}
+
+/* Ensure columns stay aligned */
+.col-lg-8, .col-lg-4 {
+  display: flex;
+  flex-direction: column;
+}
+
+.col-lg-8 > .card, .col-lg-4 > .card {
+  flex: 1;
+}
+
+/* Fix for Stripe element */
+.StripeElement {
+  padding: 12px 15px;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  background: white;
+}
+
+.StripeElement--focus {
+  border-color: #86b7fe;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* Order summary fixes */
+.text-muted {
+  color: #6c757d !important;
+}
+
+.fs-5 {
+  font-size: 1.25rem !important;
+}
+
+/* Additional improvements for better user experience */
+
+/* Product cards hover effect */
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+/* Search box styling */
+.input-group .form-control:focus {
+  border-color: #86b7fe;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* Filter badges */
+.badge {
+  font-size: 0.75rem;
+  padding: 0.4em 0.6em;
+}
+
+/* Loading spinner */
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .card-body {
+    padding: 1rem;
+  }
+  
+  .input-group {
+    margin-bottom: 0.75rem;
+  }
+  
+  .container.my-5 {
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+  }
+}
+
+/* Button improvements */
+.btn {
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+/* Form improvements */
+.form-control, .form-select {
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  padding: 0.75rem;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: #86b7fe;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* Alert improvements */
+.alert {
+  border-radius: 8px;
+  border: none;
+}
+
+/* Navigation improvements (if you have a navbar) */
+.navbar {
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Footer improvements (if you have a footer) */
+.footer {
+  margin-top: auto;
+  padding: 2rem 0;
+  background-color: #f8f9fa;
+  border-top: 1px solid #e9ecef;
+}

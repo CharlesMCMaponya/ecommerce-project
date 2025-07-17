@@ -1,9 +1,32 @@
+ HEAD
 # Environment variables
 .env
 .env.local
 .env.production
 
 # Python
+
+ HEAD
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+
+ # Python
+venv/
+__pycache__/
+ bcc23c313e1aa031d4a028f3ce3ed6e57eb465f9
 *.pyc
 __pycache__/
 *.pyo
@@ -46,7 +69,31 @@ yarn-error.log*
 .npm
 .eslintcache
 
+HEAD
 # Build directories
+
+# Django
+*.log
+*.pot
+*.pyc
+__pycache__/
+media/
+staticfiles/
+
+# React
+b121fbcdb76e34ef0a6c021a84a19fbd13e7e578
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+HEAD
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+.DS_Store
+ bcc23c313e1aa031d4a028f3ce3ed6e57eb465f9
 build/
 dist/
 *.egg-info/
@@ -57,7 +104,19 @@ dist/
 .tox/
 htmlcov/
 
+ HEAD
 # Deployment
 *.pid
 *.seed
 *.pid.lock
+
+# IDE
+.idea/
+.vscode/
+
+.env
+*.pyc
+__pycache__/
+db.sqlite3
+b121fbcdb76e34ef0a6c021a84a19fbd13e7e578
+ bcc23c313e1aa031d4a028f3ce3ed6e57eb465f9
