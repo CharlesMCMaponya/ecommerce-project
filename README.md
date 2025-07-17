@@ -1,70 +1,153 @@
-# Getting Started with Create React App
+# MCPECULIAR E-commerce Platform
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+MCPECULIAR is a full-featured e-commerce platform built with Django and React. It provides everything you need for a complete online shopping experience - from browsing products to secure checkout and order tracking.
 
-## Available Scripts
+## What You Get
 
-In the project directory, you can run:
+The platform comes with essential e-commerce features like product catalogs with categories and search functionality. Users can add items to their cart, complete secure purchases through Stripe integration, and track their orders. There's also a complete user account system with profiles and order history.
 
-### `npm start`
+Beyond the basics, you get product reviews and ratings, wishlist functionality, email notifications for order updates, an admin dashboard for managing everything, newsletter subscriptions, and shipping management.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## The Technology Behind It
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The backend runs on Django with Django REST Framework for API development. PostgreSQL handles the database, Stripe processes payments, and Celery manages email tasks with Redis as the broker and cache.
 
-### `npm test`
+The frontend is built with React and React Router for navigation. Redux manages the application state, Bootstrap handles the UI components, and Axios manages HTTP requests. Stripe.js handles the payment integration on the client side.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+For deployment, everything is containerized with Docker, uses GitHub Actions for CI/CD, Nginx as the web server, Gunicorn as the WSGI server, and can be hosted on AWS.
 
-### `npm run build`
+## Getting Started
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Before you begin, make sure you have Python 3.9 or higher, Node.js 16 or higher, PostgreSQL, Redis, and a Stripe account set up.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**Setting up the Backend**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Start by cloning the repository:
+```bash
+git clone https://github.com/CharlesMCMaponya/ecommerce-project.git
+cd ecommerce-project/backend
+```
 
-### `npm run eject`
+Create and activate a virtual environment:
+```bash
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+venv\Scripts\activate    # Windows
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Install the required dependencies:
+```bash
+pip install -r requirements.txt
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Set up your environment variables by copying the example file:
+```bash
+cp .env.example .env
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+You'll need to edit the .env file with your specific configuration details.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Apply the database migrations:
+```bash
+python manage.py migrate
+```
 
-## Learn More
+Create a superuser account:
+```bash
+python manage.py createsuperuser
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Start the development server:
+```bash
+python manage.py runserver
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Setting up the Frontend**
 
-### Code Splitting
+Navigate to the frontend directory:
+```bash
+cd ../frontend
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Install the dependencies:
+```bash
+npm install
+```
 
-### Analyzing the Bundle Size
+Start the development server:
+```bash
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+**Production Setup with Docker**
 
-### Making a Progressive Web App
+For production deployment, build and start the containers:
+```bash
+docker-compose up --build -d
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Apply migrations in the container:
+```bash
+docker-compose exec backend python manage.py migrate
+```
 
-### Advanced Configuration
+Collect static files:
+```bash
+docker-compose exec backend python manage.py collectstatic --no-input
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Configuration
 
-### Deployment
+You'll need to create a .env file in the backend directory with your specific settings:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```env
+# Django Settings
+DEBUG=False
+SECRET_KEY=your-secret-key
+ALLOWED_HOSTS=localhost,127.0.0.1
 
-### `npm run build` fails to minify
+# Database
+DB_ENGINE=django.db.backends.postgresql
+DB_NAME=ecommerce
+DB_USER=postgres
+DB_PASSWORD=password
+DB_HOST=db
+DB_PORT=5432
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Stripe
+STRIPE_PUBLISHABLE_KEY=pk_test_...
+STRIPE_SECRET_KEY=sk_test_...
+STRIPE_WEBHOOK_SECRET=whsec_...
+
+# Email
+EMAIL_HOST=smtp.sendgrid.net
+EMAIL_PORT=587
+EMAIL_HOST_USER=apikey
+EMAIL_HOST_PASSWORD=your-sendgrid-key
+DEFAULT_FROM_EMAIL=contact@mcpeculiar.com
+
+# Redis
+REDIS_URL=redis://redis:6379/0
+```
+
+For Stripe webhooks, you'll need to set up these endpoints in your Stripe dashboard: payment_intent.succeeded, payment_intent.payment_failed, and checkout.session.completed.
+
+## How It Works
+
+Customers can browse products and categories, add items to their cart and wishlist, complete purchases, track orders, and write reviews. Administrators can manage products and categories, process orders and update statuses, view sales reports, and manage users.
+
+The platform runs on these key endpoints:
+- Frontend: http://localhost:3000
+- Backend API: http://localhost:8000/api/
+- Admin Panel: http://localhost:8000/admin/
+- API Documentation: http://localhost:8000/swagger/
+
+## License
+
+All Rights Reserved. Copyright (c) 2025 Charles Mosehla.
+
+This software is proprietary and confidential. Unauthorized copying, distribution, or modification is strictly prohibited.
+
+## Contact
+
+For support or questions about the project, reach out to Charles Mosehla at charlesMosehla@outlook.com or check out the project repository at https://github.com/CharlesMCMaponya/ecommerce-project.
